@@ -1,6 +1,6 @@
 /* Custom cursor system. Native keywords remain as fallbacks. */
 :where(html, body) {
-  cursor: url("/cursor.svg") 8 7, default;
+  cursor: url("/cursors/cursor.svg") 8 7, default;
 }
 
 :where(
