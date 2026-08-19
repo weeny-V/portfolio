@@ -1,12 +1,32 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
-import { Nodejs } from "@/components/ui/svgs/nodejs";
-import { Docker } from "@/components/ui/svgs/docker";
+import {
+  ReactLight,
+  NextjsIconDark,
+  Typescript,
+  Nodejs,
+  Docker,
+  Java,
+  JavaScript,
+  Redux,
+  NestJS,
+  Kotlin,
+  SpringBoot,
+  Tailwind,
+  Mui,
+  Mongodb,
+  Mysql,
+  Redis,
+  Rabbitmq,
+  Graphql,
+  Jest,
+  Vite,
+  Gitlab,
+  Openai,
+  Websocket,
+  Langchain
+} from "@/components/ui/svgs"
 import { SITE_URL } from "@/lib/site-config";
-import { Java } from "@/components/ui/svgs/java";
 
 type Hackathon = {
   title: string;
@@ -29,30 +49,30 @@ export const DATA = {
     "I am a **Fullstack Developer** specializing in React, Next.js, and TypeScript. I build responsive interfaces, complex state-driven forms, real-time WebSocket features, reusable UI systems, and API integrations. I have also contributed to frontend modernization by upgrading 30+ React modules, introducing Vite, migrating projects from SVN to Git, and improving CI/CD workflows.",
   avatarUrl: "/vladyslav-kruhlov.jpg",
   skills: [
-    { name: "JavaScript", icon: undefined },
+    { name: "JavaScript", icon: JavaScript },
     { name: "TypeScript", icon: Typescript },
     { name: "React", icon: ReactLight },
     { name: "Next.js", icon: NextjsIconDark },
-    { name: "Redux Toolkit", icon: undefined },
+    { name: "Redux Toolkit", icon: Redux },
     { name: "Node.js", icon: Nodejs },
-    { name: "NestJS", icon: undefined },
+    { name: "NestJS", icon: NestJS },
     { name: "Java", icon: Java },
-    { name: "Kotlin", icon: undefined },
-    { name: "Spring Boot", icon: undefined },
-    { name: "Tailwind CSS", icon: undefined },
-    { name: "Material UI", icon: undefined },
-    { name: "MongoDB", icon: undefined },
-    { name: "MySQL", icon: undefined },
-    { name: "Redis", icon: undefined },
-    { name: "RabbitMQ", icon: undefined },
-    { name: "WebSockets", icon: undefined },
-    { name: "GraphQL", icon: undefined },
-    { name: "Jest", icon: undefined },
-    { name: "Vite", icon: undefined },
+    { name: "Kotlin", icon: Kotlin },
+    { name: "Spring Boot", icon: SpringBoot },
+    { name: "Tailwind CSS", icon: Tailwind },
+    { name: "Material UI", icon: Mui },
+    { name: "MongoDB", icon: Mongodb },
+    { name: "MySQL", icon: Mysql },
+    { name: "Redis", icon: Redis },
+    { name: "RabbitMQ", icon: Rabbitmq },
+    { name: "WebSockets", icon: Websocket },
+    { name: "GraphQL", icon: Graphql },
+    { name: "Jest", icon: Jest },
+    { name: "Vite", icon: Vite },
     { name: "Docker", icon: Docker },
-    { name: "GitLab CI/CD", icon: undefined },
-    { name: "LangChain", icon: undefined },
-    { name: "OpenAI API", icon: undefined },
+    { name: "GitLab CI/CD", icon: Gitlab },
+    { name: "LangChain", icon: Langchain },
+    { name: "OpenAI API", icon: Openai },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },

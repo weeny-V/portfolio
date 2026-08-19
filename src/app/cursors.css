@@ -1,0 +1,63 @@
+/* Custom cursor system. Native keywords remain as fallbacks. */
+:where(html, body) {
+  cursor: url("/cursor.svg") 8 7, default;
+}
+
+:where(
+  a,
+  button,
+  summary,
+  label[for],
+  select,
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [role="menuitem"],
+  [data-cursor="pointer"],
+  .cursor-pointer
+) {
+  cursor: url("/cursors/pointer.svg") 9 7, pointer !important;
+}
+
+:where(input, textarea, [contenteditable="true"], [data-cursor="text"], .cursor-text) {
+  cursor: url("/cursors/text.svg") 14 14, text !important;
+}
+
+:where(
+  button:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled,
+  [aria-disabled="true"],
+  [data-cursor="not-allowed"],
+  .cursor-not-allowed
+) {
+  cursor: url("/cursors/not-allowed.svg") 14 14, not-allowed !important;
+}
+
+:where([draggable="true"], [data-cursor="grab"], .cursor-grab) {
+  cursor: url("/cursors/grab.svg") 14 10, grab !important;
+}
+
+:where([draggable="true"]:active, [data-cursor="grabbing"], .cursor-grabbing) {
+  cursor: url("/cursors/grabbing.svg") 14 10, grabbing !important;
+}
+
+:where([data-cursor="zoom-in"], .cursor-zoom-in) {
+  cursor: url("/cursors/zoom-in.svg") 12 12, zoom-in !important;
+}
+
+:where([data-cursor="zoom-out"], .cursor-zoom-out) {
+  cursor: url("/cursors/zoom-out.svg") 12 12, zoom-out !important;
+}
+
+:where([data-cursor="crosshair"], .cursor-crosshair) {
+  cursor: url("/cursors/crosshair.svg") 14 14, crosshair !important;
+}
+
+@media (pointer: coarse) {
+  :where(html, body, *) {
+    cursor: auto !important;
+  }
+}
+

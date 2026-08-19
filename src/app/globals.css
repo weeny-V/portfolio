@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./cursors.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -233,4 +234,13 @@
     @apply border-b-0;
   }
 
+}
+
+::selection {
+  background-color: #4aefcc;
+  color: contrast-color(#4aefcc);
+}
+  ::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
