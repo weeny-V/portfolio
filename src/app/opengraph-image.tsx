@@ -1,31 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
-export const runtime = "edge";
 export const alt = `${DATA.name} — Fullstack Developer portfolio`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-async function getFonts() {
-  try {
-    const [body, display] = await Promise.all([
-      fetch(new URL("../../public/fonts/CabinetGrotesk-Medium.ttf", import.meta.url)).then(
-        (response) => response.arrayBuffer()
-      ),
-      fetch(new URL("../../public/fonts/ClashDisplay-Semibold.ttf", import.meta.url)).then(
-        (response) => response.arrayBuffer()
-      ),
-    ]);
-    return { body, display };
-  } catch {
-    return null;
-  }
+async function getAssets() {
+  const publicDirectory = path.join(process.cwd(), "public");
+  const [body, display, avatar] = await Promise.all([
+    readFile(path.join(publicDirectory, "fonts", "CabinetGrotesk-Medium.ttf")),
+    readFile(path.join(publicDirectory, "fonts", "ClashDisplay-Semibold.ttf")),
+    readFile(path.join(publicDirectory, "vladyslav-kruhlov.jpg")),
+  ]);
+  const toArrayBuffer = (buffer: Buffer): ArrayBuffer =>
+    buffer.buffer.slice(
+      buffer.byteOffset,
+      buffer.byteOffset + buffer.byteLength
+    ) as ArrayBuffer;
+
+  return {
+    body: toArrayBuffer(body),
+    display: toArrayBuffer(display),
+    avatar: toArrayBuffer(avatar),
+  };
 }
 
 export default async function Image() {
-  const fonts = await getFonts();
-  const avatarUrl = new URL(DATA.avatarUrl, DATA.url).toString();
+  const assets = await getAssets();
 
   return new ImageResponse(
     (
@@ -132,7 +136,7 @@ export default async function Image() {
           }}
         >
           <img
-            src={avatarUrl}
+            src={assets?.avatar as unknown as string}
             alt={DATA.name}
             style={{
               width: "100%",
@@ -146,10 +150,10 @@ export default async function Image() {
     ),
     {
       ...size,
-      fonts: fonts
+      fonts: assets
         ? [
-            { name: "Cabinet Grotesk", data: fonts.body, weight: 400 },
-            { name: "Clash Display", data: fonts.display, weight: 600 },
+            { name: "Cabinet Grotesk", data: assets.body, weight: 400 },
+            { name: "Clash Display", data: assets.display, weight: 600 },
           ]
         : undefined,
     }

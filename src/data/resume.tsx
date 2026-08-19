@@ -73,7 +73,7 @@ export const DATA = {
         icon: Icons.linkedin,
         navbar: true,
       },
-      email: {
+      Email: {
         name: "Send Email",
         url: "mailto:vladkruglovfencer@gmail.com",
         icon: Icons.email,
