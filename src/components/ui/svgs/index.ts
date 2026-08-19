@@ -34,6 +34,7 @@ import { SpringBoot } from "@/components/ui/svgs/springboot";
 import { Tailwind } from "@/components/ui/svgs/tailwind";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Vite } from "@/components/ui/svgs/vite";
+import { Vue } from "@/components/ui/svgs/vue";
 import { Websocket } from "@/components/ui/svgs/websocket";
 
 export {
@@ -73,5 +74,6 @@ export {
   Tailwind,
   Typescript,
   Vite,
+  Vue,
   Websocket,
 }

@@ -7,10 +7,18 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
+import PersonalProjectsSection from "@/components/section/personal-projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
+const SKILL_CATEGORIES = [
+  "Frontend",
+  "Backend",
+  "Data & Messaging",
+  "AI & APIs",
+  "DevOps & Testing",
+] as const;
 
 export default function Page() {
   return (
@@ -110,14 +118,40 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
+          <div className="flex flex-col gap-5">
+            {SKILL_CATEGORIES.map((category, categoryIndex) => (
+              <div key={category} className="flex flex-col gap-2.5">
+                <BlurFade
+                  delay={BLUR_FADE_DELAY * 10 + categoryIndex * 0.05}
+                >
+                  <h3 className="text-sm font-semibold text-muted-foreground">
+                    {category}
+                  </h3>
+                </BlurFade>
+                <div className="flex flex-wrap gap-2">
+                  {DATA.skills
+                    .filter((skill) => skill.category === category)
+                    .map((skill, skillIndex) => (
+                      <BlurFade
+                        key={skill.name}
+                        delay={
+                          BLUR_FADE_DELAY * 10 +
+                          categoryIndex * 0.05 +
+                          skillIndex * 0.025
+                        }
+                      >
+                        <div className="flex h-8 w-fit items-center gap-2 rounded-xl border border-border bg-background px-4 ring-2 ring-border/20">
+                          {skill.icon && (
+                            <skill.icon className="size-4 overflow-hidden rounded object-contain" />
+                          )}
+                          <span className="text-sm font-medium text-foreground">
+                            {skill.name}
+                          </span>
+                        </div>
+                      </BlurFade>
+                    ))}
                 </div>
-              </BlurFade>
+              </div>
             ))}
           </div>
         </div>
@@ -127,6 +161,9 @@ export default function Page() {
           <ProjectsSection />
         </BlurFade>
       </section>
+      <BlurFade delay={BLUR_FADE_DELAY * 12}>
+        <PersonalProjectsSection />
+      </BlurFade>
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />
